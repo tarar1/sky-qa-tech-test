@@ -22,6 +22,18 @@ class Calculator implements iCalculator {
         return ($a / $b);
     }
 
+    public function factorial($a) {
+        if ($a < 2) { 
+            return 1; 
+        } 
+        else { 
+            return ($a * factorial($a - 1)); 
+        } 
+    }
+    public function decimaltohex($a) {
+       return  dechex ($a);
+    }
+
     public function pressNumber($number) {
         $this->stack[] = $number;
     }
@@ -46,14 +58,27 @@ class Calculator implements iCalculator {
         }
         $this->op = "*";
     }
-
+    // Press the divide button 
     public function pressDivide() {
         if(count($this->stack) > 1) {
             $this->evaluateStack();
         }
         $this->op = "/";
     }
-
+    // press factorial button
+    public function pressFactorial() {
+        if(count($this->stack) > 1) {
+            $this->evaluateStack();
+        }
+        $this->op = "!";
+    }
+    // press convert to hexa decial button
+    public function pressHexadecimal() {
+        if(count($this->stack) > 1) {
+            $this->evaluateStack();
+        }
+        $this->op = "hex";
+    }
     public function pressEquals() {
         return $this->evaluateStack();
     }
@@ -71,6 +96,12 @@ class Calculator implements iCalculator {
                 break;
             case "/":
                 $result = $this->divide(array_shift($this->stack), array_shift($this->stack));
+                break;
+            case "!":
+                $result = $this->factorial(array_shift($this->stack));
+                break;
+            case "hex":
+                $result = $this->decimaltohex(array_shift($this->stack));
                 break;
         }
         $this->clearStack();

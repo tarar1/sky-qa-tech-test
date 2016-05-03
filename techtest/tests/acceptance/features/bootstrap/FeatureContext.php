@@ -45,6 +45,31 @@ class FeatureContext extends BehatContext {
     public function iHitEquals() {
         $this->calculator->pressEquals();
     }
+    /**
+     * @Given /^I hit "add"$/
+     */
+    public function iHitAdd() {
+        $this->calculator->pressAdd();
+    }
+    /**
+     * @Given /^I hit "subtract"$/
+     */
+    public function iHitSubtract() {
+        $this->calculator->pressSubtract();
+    }
+    /**
+     * @Given /^I hit "factorial"$/
+     */
+    public function iHitfactorial() {
+        $this->calculator->pressFactorial();
+    }
+
+    /**
+     * @Given /^I hit "hexadecimal"$/
+     */
+    public function iHithexadecimal() {
+        $this->calculator->pressHexadecimal();
+    }
 
     /**
      * @Then /^I see a result of "(\d+)"$/
